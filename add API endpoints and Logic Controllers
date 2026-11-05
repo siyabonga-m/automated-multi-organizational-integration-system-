@@ -1,0 +1,21 @@
+from fastapi import HTTPException
+
+@app.post("/verify-health")
+def verify_health(request: HealthVerifyRequest):
+    if not request.has_yellow_fever_vaccine:
+        raise HTTPException(status_code=400, detail="Yellow fever vaccine required")
+    if request.temperature > 37.5:
+        raise HTTPException(status_code=400, detail="High temperature detected")
+    return {"status": "cleared", "passport": request.passport_number}
+
+@app.post("/declare-customs")
+def declare_customs(request: CustomsDeclarationRequest):
+    if not request.tax_paid_at_post_office:
+        raise HTTPException(status_code=400, detail="Customs tax must be paid first")
+    return {"status": "declaration_accepted", "item": request.item_description}
+
+@app.post("/final-clearance")
+def final_clearance(request: FinalClearanceRequest):
+    if not request.passport_cleared or not request.health_cleared:
+        raise HTTPException(status_code=400, detail="Clearance denied. Missing requirements.")
+    return {"status": "clearance_granted", "driver": request.driver_name}
