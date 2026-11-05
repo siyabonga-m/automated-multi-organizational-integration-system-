@@ -28,3 +28,4 @@ class FinalClearanceRequest(BaseModel):
     driver_name: str
     passport_cleared: bool
     health_cleared: bool
+    # data_models added by student 2 Lindelwa 
