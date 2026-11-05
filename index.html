@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Border Control Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f9; }
+        .card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        button { background-color: #28a745; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Eswatini Border Control System</h1>
+    
+    <div class="card">
+        <h2>Health Verification</h2>
+        <button onclick="testHealth()">Test Health Endpoint</button>
+        <p id="health-result"></p>
+    </div>
+
+    <div class="card">
+        <h2>Customs Declaration</h2>
+        <button onclick="testCustoms()">Test Customs Endpoint</button>
+        <p id="customs-result"></p>
+    </div>
+
+    <div class="card">
+        <h2>Final Clearance</h2>
+        <button onclick="testClearance()">Test Clearance Endpoint</button>
+        <p id="clearance-result"></p>
+    </div>
+
+    <script>
+        async function testHealth() {
+            document.getElementById('health-result').innerText = "Sending request... (Mock data)";
+            setTimeout(() => { document.getElementById('health-result').innerText = "Status: Cleared ✅"; }, 1000);
+        }
+        
+        async function testCustoms() {
+            document.getElementById('customs-result').innerText = "Sending request... (Mock data)";
+            setTimeout(() => { document.getElementById('customs-result').innerText = "Status: Declaration Accepted ✅"; }, 1000);
+        }
+
+        async function testClearance() {
+            document.getElementById('clearance-result').innerText = "Sending request... (Mock data)";
+            setTimeout(() => { document.getElementById('clearance-result').innerText = "Status: Clearance Granted ✅"; }, 1000);
+        }
+    </script>
+</body>
+</html>
